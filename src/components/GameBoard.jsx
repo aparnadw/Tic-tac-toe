@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const initialGameBoard = [
   [null, null, null],
   [null, null, null],
@@ -11,7 +12,6 @@ export default function GameBoard( { onSelectSquare, turns }) {
   for(const turn of turns){
     const { square, player } = turn;
     const { row, col } = square;
-    console.log("game Board - ", square, player, row, col);
 
     gameBoard[row][col] = player;
   }
@@ -39,7 +39,7 @@ export default function GameBoard( { onSelectSquare, turns }) {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => onSelectSquare(rowIndex, colIndex)}>{playerSymbol}</button>
+                <button onClick={() => onSelectSquare(rowIndex, colIndex)} disabled={playerSymbol}>{playerSymbol}</button>
               </li>
             ))}
           </ol>
