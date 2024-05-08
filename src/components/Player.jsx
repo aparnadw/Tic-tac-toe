@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({ initialName, symbol, isActive, onChangeName}) {
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEditClick() {
     console.log("setEditing is call");
     setIsEditing((editing) => !editing);
+    if(isEditing) {
+      onChangeName(symbol,playerName)
+    }
   }
 
   function handleChange (event) {
